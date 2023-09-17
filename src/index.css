@@ -1,13 +1,103 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root {
+  --padding : 10px;
+  display: grid;
+  grid-template-columns: calc(140px + 10vw) auto;
+  grid-template-rows: 1fr;
+  gap: 10px;
+  min-height: 100vh;
+  padding: var(--padding);
+  transition: .3s;
+}
+
+#root:has(#sidebar.close) {
+  grid-template-columns: 70px auto;
+}
+
+#sidebar {
+  position: sticky;
+  top: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  background: #e1e2ed;
+  max-height: calc(100vh - var(--padding) * 2);
+}
+
+#sidebar.close .sidebar_link span.title {
+  display: none;
+}
+
+#sidebar.close .sidebar_link {
+  justify-content: center;
+}
+
+#sidebar .sidebar_link.closebtn {
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+#sidebar .sidebar_link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+}
+
+#sidebar .sidebar_link * {
+  pointer-events: none;
+}
+
+#sidebar .sidebar_link span {
+  font-size: 18px;
+}
+#sidebar .sidebar_link span.icon {
+  margin-top: 5px;
+}
+
+#topbar {
+  position: sticky;
+  top: 10px;
+  background: #e1e2ed;
+  padding: 20px;
+  height: fit-content;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 15px;
+}
+
+#topbar .topbar_links {
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+#topbar .topbar_links .topbar_link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.bar {
+  border-radius: 8px;
+}
+
+#content_page div {
+  background: #e1e2ed;
+  height: 40px;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
